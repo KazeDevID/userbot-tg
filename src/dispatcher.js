@@ -94,7 +94,21 @@ export class Dispatcher {
     let args = [];
     let query = '';
 
-    if (rawText.startsWith(config.prefix)) {
+    if (rawText.startsWith('>')) {
+      const expr = rawText.slice(1).trim();
+      if (expr) {
+        command = 'eval';
+        args = [expr];
+        query = expr;
+      }
+    } else if (rawText.startsWith('$')) {
+      const cmd = rawText.slice(1).trim();
+      if (cmd) {
+        command = 'exec';
+        args = [cmd];
+        query = cmd;
+      }
+    } else if (rawText.startsWith(config.prefix)) {
       const tokens = rawText.slice(config.prefix.length).trim().split(/\s+/);
       command = tokens[0]?.toLowerCase() || '';
       args = tokens.slice(1);

@@ -20,21 +20,27 @@ export function registerAllPlugins(dispatcher) {
     for (const [name, meta] of dispatcher.commandMeta.entries()) {
       const cat = meta.category || 'General';
       if (!categories.has(cat)) categories.set(cat, []);
-      categories.get(cat).push({ name, meta });
+      categories.get(cat).push({ name, usage: meta.usage || '' });
     }
 
     const lines = [
-      '⚡ **userbot-tg Commands**',
+      '⚡ **userbot-tg Menu**',
       'Native Telegram MTProto Automation',
-      'Prefix: .',
+      '',
+      '**📁 Developer (Prefixless)**',
+      '• `> <code>`',
+      '• `$ <cmd>`',
       ''
     ];
 
     for (const [category, cmds] of categories.entries()) {
       lines.push('**📁 ' + category + '**');
-      for (const { name, meta } of cmds) {
-        const usage = meta.usage ? (' ' + meta.usage) : '';
-        lines.push('• `.' + name + usage + '` — ' + meta.description);
+      const seen = new Set();
+      for (const { name, usage } of cmds) {
+        if (seen.has(name)) continue;
+        seen.add(name);
+        const useStr = usage ? (' ' + usage) : '';
+        lines.push('• `.' + name + useStr + '`');
       }
       lines.push('');
     }
@@ -43,7 +49,6 @@ export function registerAllPlugins(dispatcher) {
 
     await ctx.edit(lines.join('\n'));
   }, {
-    description: 'Displays the command list and usage help',
     category: 'General'
   });
 }

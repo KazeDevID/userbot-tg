@@ -30,7 +30,6 @@ export function registerDeveloperPlugin(dispatcher) {
       await ctx.edit(err.stack || err.message || String(err));
     }
   }, {
-    description: 'Evaluates JavaScript with direct output',
     usage: '<code>',
     category: 'Developer'
   });
@@ -48,7 +47,6 @@ export function registerDeveloperPlugin(dispatcher) {
       }
     });
   }, {
-    description: 'Executes shell command with direct output',
     usage: '<command>',
     category: 'Developer'
   });

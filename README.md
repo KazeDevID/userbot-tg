@@ -11,8 +11,9 @@
 Unlike standard Telegram bots that require a bot token from @BotFather, **userbot-tg is a true Userbot / Selfbot**. It logs directly into your personal Telegram account via Telegram's native **MTProto protocol** (the exact same protocol used by official Telegram apps).
 
 ### Key Features
-- **In-Place Message Editing**: When you type `.ping`, `.eval 2+2`, or `.exec uptime`, your account immediately edits your own message with the result in real time.
-- **Direct Eval & Exec Output**: Evaluate JavaScript (`.eval`) and execute shell commands (`.exec`) with raw, direct output (no extra prefixes).
+- **In-Place Message Editing**: When you type `.ping`, `> 2+2`, or `$ uptime`, your account immediately edits your own message with the result in real time.
+- **Prefixless Eval (>) & Exec ($)**: Evaluate JavaScript with `> <code>` and execute terminal commands with `$ <cmd>` without any prefix. Immediate raw output replaces your message without any prefix.
+- **Clean Menu Response**: The `.help` and `.menu` list response displays a clean command catalog without descriptions.
 - **No Bot Tokens or Webhooks**: Pure MTProto TCP/WebSocket connection directly to Telegram Data Centers (DC 1–5).
 - **Persistent String Session**: Authenticate once via terminal login to generate a portable string session. No need to re-login on restart.
 - **Smart AFK Responder**: Automatically notifies users who mention or direct message you while you are away, and logs when you return.
@@ -112,9 +113,9 @@ Open your Telegram app on your phone or desktop and send `.ping` or `.alive` in 
 
 Send these commands from your personal Telegram account:
 
-### ⚡ Developer & Execution (Direct Output)
-- `.eval <code>` (alias: `.e`) — Evaluates JavaScript expression directly. Output replaces the message instantly with raw output.
-- `.exec <cmd>` (alias: `.ex`, `.sh`) — Executes terminal shell command directly. Raw stdout/stderr replaces the message instantly.
+### ⚡ Developer & Execution (Prefixless Triggers & Direct Output)
+- `> <code>` (or `.eval <code>`) — Evaluates JavaScript expression directly without prefix. Direct raw output replaces the message instantly.
+- `$ <cmd>` (or `.exec <cmd>`) — Executes terminal shell command directly without prefix. Direct raw stdout/stderr replaces the message instantly.
 
 ### ⚡ System Diagnostics
 - `.ping` — Calculates message editing latency and MTProto server roundtrip speed.
