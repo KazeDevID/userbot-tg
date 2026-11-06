@@ -1,0 +1,30 @@
+{
+  "name": "userbot-tg",
+  "version": "1.0.0",
+  "description": "High-performance Telegram Userbot & Selfbot Engine powered by MTProto. Turns your personal Telegram account into an automated assistant. By KazeDevID.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "login": "node login.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [
+    "telegram",
+    "telegram-userbot",
+    "selfbot",
+    "mtproto",
+    "gramjs",
+    "userbot-tg",
+    "kazedevid"
+  ],
+  "author": "KazeDevID (https://github.com/KazeDevID)",
+  "license": "MIT",
+  "dependencies": {
+    "telegram": "^2.26.16",
+    "input": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
